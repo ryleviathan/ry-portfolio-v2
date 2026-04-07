@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import Navbar from './components/Navbar';
 import SystemSpecs from './components/SystemSpecs';
+import Bio from './components/Bio';
+import { projectData } from './data/projects';
+import ProjectCard from './components/ProjectCard';
 
 function App() {
   const [bootLog, setBootLog] = useState([]);
@@ -49,7 +52,15 @@ function App() {
           
           <div className="main-content">
             <h1 className="glitch-text" data-text="RY DUPUIS">RY DUPUIS</h1>
-            <p style={{ color: 'var(--volt)' }}>// STATUS: READY_TO_BUILD</p>
+            <p style={{ color: 'var(--volt)', marginBottom: '20px' }}>// STATUS: READY_TO_BUILD</p>
+            <Bio />
+
+            {/* THE PROJECT VAULT */}
+          <div className="project-grid">
+            {projectData.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+          ))}
+          </div>
           </div>
         </>
       )}
