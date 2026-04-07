@@ -182,3 +182,42 @@
     border-right-color: var(--border);
   }
 }
+
+/*Glitch animation*/
+.terminal-container {
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.glitch-text {
+  font-size: 5rem;
+  color: var(--solar-flare);
+  position: relative;
+  text-shadow: 0 0 10px var(--solar-flare);
+}
+
+/* Simple Flicker/Shake */
+@keyframes colorGlitch {
+  0% { text-shadow: 1px 0 var(--solar-flare), -1px 0 var(--volt); }
+  50% { text-shadow: -1px 0 var(--solar-flare), 1px 0 var(--volt); }
+  100% { text-shadow: 1px 0 var(--solar-flare), -1px 0 var(--volt); }
+}
+
+.glitch-text:hover {
+  animation: colorGlitch 0.1s steps(2) infinite;
+  color: white;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: var(--volt);
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
