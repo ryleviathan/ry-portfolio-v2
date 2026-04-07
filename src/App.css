@@ -221,3 +221,114 @@
 @keyframes blink {
   50% { opacity: 0; }
 }
+
+/* Navbar */
+
+.side-nav {
+  position: fixed;
+  left: 40px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 20;
+}
+
+.nav-item-wrapper {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  padding: 5px 10px;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+}
+
+.nav-code {
+  color: var(--volt);
+  font-size: 0.7rem;
+  margin-right: 10px;
+  opacity: 0.6;
+}
+
+.nav-label {
+  color: white;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* THE HACKER HOVER EFFECT */
+.nav-item-wrapper:hover {
+  border-left: 2px solid var(--solar-flare);
+  background: rgba(255, 101, 17, 0.05);
+  padding-left: 20px; /* Slides out slightly */
+}
+
+.nav-item-wrapper:hover .nav-label {
+  color: var(--solar-flare);
+  text-shadow: 2px 0 var(--volt), -2px 0 #fff;
+  animation: nav-fracture 0.1s infinite;
+}
+
+@keyframes nav-fracture {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(10deg); }
+  40% { transform: skew(-10deg); }
+  60% { transform: skew(5deg); }
+  100% { transform: skew(0deg); }
+}
+
+/* A subtle Volt pulse behind the active hover */
+.nav-scanline {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(206, 255, 0, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.nav-item-wrapper:hover .nav-scanline {
+  left: 100%;
+}
+
+/* Diagnostics section */
+.system-specs {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  width: 250px;
+  background: rgba(206, 255, 0, 0.03); /* Tiny hint of Volt */
+  border: 1px solid rgba(255, 101, 17, 0.3); /* Dim Solar Flare */
+  padding: 15px;
+  font-size: 0.75rem;
+  z-index: 20;
+}
+
+.specs-header {
+  color: var(--solar-flare);
+  border-bottom: 1px solid var(--solar-flare);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.spec-label {
+  color: var(--text-dim);
+}
+
+.spec-value {
+  color: var(--volt);
+  text-shadow: 0 0 5px rgba(206, 255, 0, 0.4);
+}
+
+.specs-footer {
+  margin-top: 10px;
+  text-align: right;
+  opacity: 0.4;
+  font-size: 0.6rem;
+}

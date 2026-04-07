@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Navbar from './components/Navbar';
+import SystemSpecs from './components/SystemSpecs';
 
 function App() {
   const [bootLog, setBootLog] = useState([]);
@@ -30,6 +32,7 @@ function App() {
   return (
     <div className="terminal-container">
       {!isBooted ? (
+        /* --- STATE 01: BOOTING --- */
         <div className="boot-sequence">
           {bootLog.map((line, index) => (
             <p key={index} style={{ color: index % 2 === 0 ? 'var(--solar-flare)' : 'var(--volt)' }}>
@@ -39,10 +42,16 @@ function App() {
           <span className="cursor">_</span>
         </div>
       ) : (
-        <div className="main-content">
-          <h1 className="glitch-text" data-text="RY DUPUIS">RY DUPUIS</h1>
-          <p style={{ color: 'var(--volt)' }}>// STATUS: READY_TO_BUILD</p>
-        </div>
+        /* --- STATE 02: BOOTED (MAIN SITE) --- */
+        <>
+          <Navbar /> 
+          <SystemSpecs />
+          
+          <div className="main-content">
+            <h1 className="glitch-text" data-text="RY DUPUIS">RY DUPUIS</h1>
+            <p style={{ color: 'var(--volt)' }}>// STATUS: READY_TO_BUILD</p>
+          </div>
+        </>
       )}
     </div>
   )
